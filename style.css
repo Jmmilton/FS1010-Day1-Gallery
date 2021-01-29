@@ -6,7 +6,6 @@ body {
 .top-wrapper {
   width: 1100px;
   margin: 0 auto;
-  padding-left: 1%;
 }
 
 h1 {
@@ -30,15 +29,56 @@ img {
 }
 
 .img-layer {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 17px;
 }
 
-.img-layer:hover {
-  transition: height 0.5s ease-out;
+/* .img-description-title {
+  padding-bottom: 10px;
+}
+
+.img-description-info {
+} */
+
+.img-layer::before {
+  transition: 0.5s ease-in-out;
   background: linear-gradient(
     to bottom right,
-    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.6) 50%,
     rgba(0, 0, 0, 0) 50%
   );
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  position: absolute;
+  cursor: pointer;
+}
+
+.img-layer:hover::before {
+  opacity: 1;
+  transition: ease-in-out 500ms;
+}
+
+.img-layer:hover .img-description-layer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.img-description-layer {
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  left: 25px;
+  right: 0;
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  /* display: flex; */
+  transition: opacity 500ms, visibility 500ms;
+  font-family: "Open Sans", sans-serif;
 }
 
 .links {
